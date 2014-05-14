@@ -1,1 +1,1 @@
-<input oninput='p.innerHTML="";for(i=99;--i;){t=[];for(d=value;d;)t.push(d.slice(0,i)),d=d.slice(i);for(v=j=0;j<t.length-1;)v|=2>t[j++].length||/[\w<>.]{2}|[+|&]{2}|[+*\/%&=|<>^!-]=/.test(t[j-1][i-1]+t[j][0]);v?0:p.textContent+=(n="\n")+n+i+n+t.join(n)}'><pre id=p>
+<input oninput='p.innerHTML="";for(i=99;--i;)v=1,b="",r=new RegExp("(.{0,"+i+"})","g"),o=value.replace(r,function(a,c){a&&b&&/[\w<>.]{2}|[+|&]{2}|[+*\/%&=|<>^!-]=/.test(b[i-1]+c[0])&&(v=0);return(b=a)+"\n"}),v&&(p.textContent+=i+"\n"+o+"\n")'><pre id=p>
