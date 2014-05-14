@@ -1,37 +1,67 @@
-<h1>PrettyCode</h1>
 <a href=//github.com/xem/prettycode><img style="position:absolute;top:0;right:0;border:0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+<style>
+body { width: 850px; font-family: arial; margin: auto; }
+pre { text-align: left; }
+pre p { margin: 10px; padding: 10px; background: #ffb; porder-radius: 10px; }
+input { width: 100% }
+</style>
+<h1>PrettyCode</h1>
+<h3>A code-golfed tool that helps formatting code-golfed code</h3>
+<br>
 <br>Paste some code to prettify here:
 <br>
 <br>
-<input id=n size=99>
+<input id=n>
 <br>
 <br>
 <br>
 Result(s):
+<br>
+<br>
 <pre id=p>
 <script>
+
+// Load example
 n.value="<body onload=\"function M(c,d){for(i=H=16;i--;G|=p>>11)for(p=B[m=V(j=i%4+1)];--j?(q=B[n=V(j)])?p-q?0:h=c?0:B[p?S+=B[m]*=2:B[i++,m]=q,n]=d:L=localStorage:0;)R=Math.random}function V(x){if(x)return(D>1?4-x:x-1)<<D%2*2|i-i%4>>D%2*2;for(i=H|R()*H;B[--i%H];);B[i%H]=2<<R()+.1}(onkeyup=function(e){D=e?e.which-37:B=[];D>>2||M()|V(e?h:V());for(D=h=4;D--;)M(1);for(h=(G|h?S+' / '+(L.S>S?L.S:L.S=S):S)+'<table border>';H;P.innerHTML=h+='<th width=50 height=50>'+[B[H]])H--%4?0:h+='<tr>'})(S=G=0)\"id=P>";
 
-onload=n.oninput=function(){
+// Onload, on input: process
+(oninput=function(){
+  
+  // Flush result
   p.innerHTML="";
-  c=n.value;
-  console.log(c);
+  
+  // Loop on lines lengths
   for(i=10;i<100;i++){
+  
+    // Make an array of lines
     t=[];
-    d=c;
+    
+    // Copy the input
+    d=n.value;
+    
+    // Slice it
     while(d){
       t.push(d.substr(0,i));
       d=d.slice(i);
     }
+    
+    // Assume the result is valid
     v=1;
+    
+    // Loop on the lines
     for(j=0;j<t.length-1;j++){
-      if(t[j+1].length<2||(t[j].charAt(i-1)+t[j+1].charAt(0)).match(/[\w]{2}|\.\d|\d\.|\+=|-=|\*=|\/=|%=|&=|\|=|^=|\+\+|!=|>=|<=|&&|\|\||<<|>>/))
+    
+      // If a word / number / html tag / operator is cut
+      if(t[j+1].length<2||(t[j].charAt(i-1)+t[j+1].charAt(0)).match(/[\w]{2}|<\w|\w>|\.\d|\d\.|\+=|-=|\*=|\/=|%=|&=|\|=|^=|\+\+|!=|>=|<=|&&|\|\||<<|>>/))
+        
+        // Invalid
         v=0;
     }
+    
+    // Print the valid results
     if(v){
-      p.innerHTML+="\n\n\n"+i+" chars/line\n\n";
-      p.innerHTML+=t.join("\n").replace(/</g,"&lt;");
+      p.innerHTML+="<c>"+i+" chars/line<p>"+t.join("\n").replace(/</g,"&lt;");
     }
   }
-}
+})()
 </script>
