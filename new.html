@@ -1,0 +1,1 @@
+<input oninput='p.textContent="";for(i=3;i<99;i++)if(RegExp("^.(.{"+(i-2)+"}(\\W[\\w\\W=]|\\w\\W))+.{2,"+(i-1)+"}$").test(value))p.textContent+="\n\n"+value.match(RegExp(".{1,"+i+"}","g")).join("\n")'><pre id=p>
